@@ -73,6 +73,7 @@ export const DashboardListKV: React.FC<Props> = (props) => {
           colorScheme={"telegram"}
           size="lg"
           borderRadius={0}
+          onClick={props.onEntryClick}
         >
           + Add new entry
         </Button>

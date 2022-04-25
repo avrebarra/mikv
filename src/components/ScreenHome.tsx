@@ -38,7 +38,7 @@ export const Home: React.FC<Props> = ({}) => {
   return (
     <>
       <div className="">
-        <div className="mb-2">
+        <div className="mb-2 mt-14">
           <img className="w-32 inline-block justify-center" src={icon} alt="" />
         </div>
         <div className="font-bold text-4xl">

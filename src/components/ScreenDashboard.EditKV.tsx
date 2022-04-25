@@ -4,6 +4,8 @@ import { Link } from "react-router-dom";
 import { useToast, Button, propNames } from "@chakra-ui/react";
 import { Textarea, Input } from "@chakra-ui/react";
 import { Header } from "./BlockHeader";
+import { Icon } from "@chakra-ui/icons";
+import { MdCancel, MdCheckCircle } from "react-icons/md";
 
 import config from "../config";
 
@@ -71,7 +73,7 @@ export const DashboardEditKV: React.FC<Props> = (props) => {
         />
         <Textarea
           className={
-            "mb-2 font-mono text-slate-600" +
+            "mb-3 font-mono text-slate-600" +
             (!editable ? " cursor-pointer" : "")
           }
           borderRadius={0}
@@ -83,49 +85,66 @@ export const DashboardEditKV: React.FC<Props> = (props) => {
 
         <div className="flex justify-between">
           <Link to={`/dashboard`}>
-            <Button size="lg" borderRadius={0} onClick={props.onBackClick}>
+            <Button size="md" borderRadius={0} onClick={props.onBackClick}>
               Back
             </Button>
           </Link>
           <div>
+            {/* buttons on view */}
             {!editable ? (
-              <Button
-                size="lg"
-                disabled={editable}
-                borderRadius={0}
-                onClick={() => {
-                  setExposed(!exposed);
-                }}
-              >
-                {exposed ? "Hide" : "View"}
-              </Button>
+              <div>
+                <Button
+                  size="md"
+                  disabled={editable}
+                  borderRadius={0}
+                  onClick={() => {
+                    setExposed(!exposed);
+                  }}
+                >
+                  {exposed ? "Hide" : "View"}
+                </Button>
+                <Button
+                  colorScheme={editable ? "green" : "telegram"}
+                  size="md"
+                  borderRadius={0}
+                  onClick={() => {
+                    setEditable(!editable);
+                  }}
+                >
+                  Edit
+                </Button>
+              </div>
             ) : (
               <span />
             )}
+
+            {/* buttons on edit */}
             {editable ? (
-              <Button
-                colorScheme={"red"}
-                size="lg"
-                borderRadius={0}
-                onClick={() => {
-                  setEditable(!editable);
-                }}
-              >
-                Cancel
-              </Button>
+              <div>
+                <Button
+                  colorScheme={"red"}
+                  size="md"
+                  borderRadius={0}
+                  onClick={() => {
+                    setEditable(!editable);
+                  }}
+                >
+                  <Icon as={MdCancel} />
+                </Button>
+                <Button
+                  colorScheme={editable ? "green" : "telegram"}
+                  size="md"
+                  borderRadius={0}
+                  onClick={() => {
+                    setEditable(!editable);
+                  }}
+                >
+                  <Icon as={MdCheckCircle} />
+                </Button>
+              </div>
             ) : (
               <span />
             )}
-            <Button
-              colorScheme={editable ? "green" : "telegram"}
-              size="lg"
-              borderRadius={0}
-              onClick={() => {
-                setEditable(!editable);
-              }}
-            >
-              {editable ? "Save" : "Edit"}
-            </Button>
           </div>
         </div>
       </div>

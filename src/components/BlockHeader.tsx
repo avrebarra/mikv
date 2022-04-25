@@ -2,6 +2,9 @@ import * as React from "react";
 
 import { Link } from "react-router-dom";
 import { Button } from "@chakra-ui/react";
+import { Tooltip } from "@chakra-ui/react";
+import { Icon } from "@chakra-ui/icons";
+import { FaPowerOff } from "react-icons/fa";
 
 import config from "../config";
 
@@ -34,9 +37,11 @@ export const Header: React.FC<Props> = (props) => {
         </div>
         <div id="disconnect">
           <Link className="" to={`/`}>
-            <Button colorScheme={"red"} size="sm" borderRadius={0}>
-              Logout
-            </Button>
+            <Tooltip label="End Session" aria-label="A tooltip">
+              <Button colorScheme={"red"} size="sm" borderRadius={"full"}>
+                <Icon as={FaPowerOff} />
+              </Button>
+            </Tooltip>
           </Link>
         </div>
       </div>

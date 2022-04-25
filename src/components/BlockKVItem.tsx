@@ -54,11 +54,7 @@ export const KVItem: React.FC<Props> = (props) => {
               {props.keyname}
             </div>
           </div>
-          <div className="flex">
-            <div className="flex bg-slate-100 h-8 w-8 rounded-full items-center justify-center">
-              <ChevronRightIcon w={5} h={5} />
-            </div>
-          </div>
+          <div className="flex"></div>
         </div>
       </Box>
     </>

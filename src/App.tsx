@@ -56,7 +56,7 @@ export function App() {
     <ChakraProvider theme={ChakraThemeExtended}>
       <div className="appwrapper flex justify-center items-center h-screen w-screen ">
         <div className="app w-full max-w-lg h-full xs:max-h-144">
-          <div className="content p-10 py-16">
+          <div className="content p-8 py-10">
             <BrowserRouter basename={config.appBasePath}>
               <React.Suspense fallback={funcRenderLoader()}>
                 <Routes>

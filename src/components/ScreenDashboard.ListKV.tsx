@@ -41,7 +41,7 @@ export const DashboardListKV: React.FC<Props> = (props) => {
   return (
     <>
       <Header name="dashboard" />
-      <div className="text-4xl font-bold mb-5">
+      <div className="text-4xl font-bold mb-4">
         My Keys & <br /> Values
       </div>
       <div id="list">
@@ -58,6 +58,24 @@ export const DashboardListKV: React.FC<Props> = (props) => {
             </div>
           );
         })}
+        <Button
+          className="mb-2"
+          colorScheme={"gray"}
+          w={"full"}
+          size="md"
+          borderRadius={0}
+        >
+          Show All
+        </Button>
+        <Button
+          className="mb-1"
+          w={"full"}
+          colorScheme={"telegram"}
+          size="lg"
+          borderRadius={0}
+        >
+          + Add new entry
+        </Button>
       </div>
     </>
   );

@@ -56,7 +56,7 @@ export const DashboardEditKV: React.FC<Props> = (props) => {
   return (
     <>
       <Header name="editor" />
-      <div className="text-4xl font-bold mb-5">KV Entry Editor</div>
+      <div className="text-4xl font-bold mb-4">KV Entry Editor</div>
       <div id="form">
         <Input
           className={

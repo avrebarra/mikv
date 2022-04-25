@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 
 import { AtSignIcon } from "@chakra-ui/icons";
 import { useToast, Button } from "@chakra-ui/react";
-import { KVItem } from "./BlockKVItem";
+import { DashboardListKV } from "./ScreenDashboard.ListKV";
+import { DashboardEditKV } from "./ScreenDashboard.EditKV";
 import icon from "../../public/icon.png";
 
 import config from "../config";
@@ -14,6 +15,7 @@ export const Dashboard: React.FC<Props> = ({}) => {
   // context, vars, and states
   const toast = useToast();
   const [readiness, setReadiness] = React.useState<boolean>(false);
+  const [targetedKV, setTargetedKV] = React.useState<boolean>(false);
 
   // helper funcs
   const funcLoadData = async () => {};
@@ -39,39 +41,27 @@ export const Dashboard: React.FC<Props> = ({}) => {
 
   return (
     <>
-      <div id="header" className="flex justify-between">
-        <div id="title" className="text-2xl mb-2">
-          <span className="font-semibold">
-            <Link className="" to={`/`}>
-              #mikv
-            </Link>
-          </span>
-          <span>/dashboard</span>
-        </div>
-        <div id="disconnect">
-          <Button colorScheme={"red"} size="sm" borderRadius={0}>
-            Logout
-          </Button>
-        </div>
-      </div>
-      <div className="text-4xl font-bold mb-5">
-        My Keys & <br /> Values
-      </div>
-      <div id="list">
-        {[
-          "PASSWORD_SATU",
-          "PASSWORD_DUA",
-          "PASSWORD_TIGA",
-          "abcsd",
-          "pesa",
-        ].map((e) => {
-          return (
-            <div className="cursor-pointer mb-2">
-              <KVItem isSynced={false} keyname={e} />
-            </div>
-          );
-        })}
-      </div>
+      {/* display list */}
+      {!targetedKV ? (
+        <DashboardListKV
+          onEntryClick={() => {
+            setTargetedKV(true);
+          }}
+        />
+      ) : (
+        <div />
+      )}
+
+      {/* display editor */}
+      {targetedKV ? (
+        <DashboardEditKV
+          onBackClick={() => {
+            setTargetedKV(false);
+          }}
+        />
+      ) : (
+        <div />
+      )}
     </>
   );
 };

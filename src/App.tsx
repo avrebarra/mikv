@@ -10,7 +10,9 @@ import config from "./config";
 
 const { Home } = lazily(() => import("./components/ScreenHome"));
 const { Dashboard } = lazily(() => import("./components/ScreenDashboard"));
-const { EditKV } = lazily(() => import("./components/ScreenEditKV"));
+const { DashboardEditKV: EditKV } = lazily(
+  () => import("./components/ScreenDashboard.EditKV")
+);
 const { NotFound404 } = lazily(() => import("./components/Screen404"));
 
 const ChakraThemeExtended = extendTheme({
@@ -60,7 +62,6 @@ export function App() {
                 <Routes>
                   <Route path="/" element={<Home />} />
                   <Route path="/dashboard" element={<Dashboard />} />
-                  <Route path="/edit" element={<EditKV />} />
                   <Route path="*" element={<NotFound404 />} />
                 </Routes>
               </React.Suspense>

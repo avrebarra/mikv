@@ -48,7 +48,7 @@ export const Home: React.FC<Props> = ({}) => {
         </div>
         <div className="text-2xl mb-2">Your personal key-value store app.</div>
         <div>
-          <Link to={`/create`}>
+          <Link to={`/dashboard`}>
             <Button colorScheme={"telegram"} size="md" borderRadius={0}>
               Connect to Google Drive
             </Button>

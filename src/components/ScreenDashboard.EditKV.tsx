@@ -1,7 +1,7 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 
-import { useToast, Button } from "@chakra-ui/react";
+import { useToast, Button, propNames } from "@chakra-ui/react";
 import { Textarea, Input } from "@chakra-ui/react";
 import icon from "../../public/icon.png";
 
@@ -11,9 +11,10 @@ type Props = {
   key?: string;
   value?: string;
   editable?: boolean;
+  onBackClick?: () => void;
 };
 
-export const EditKV: React.FC<Props> = ({}) => {
+export const DashboardEditKV: React.FC<Props> = (props) => {
   // context, vars, and states
   const toast = useToast();
   const [readiness, setReadiness] = React.useState<boolean>(false);
@@ -61,7 +62,7 @@ export const EditKV: React.FC<Props> = ({}) => {
               #mikv
             </Link>
           </span>
-          <span>/edit</span>
+          <span>/editor</span>
         </div>
         <div id="disconnect">
           <Button colorScheme={"red"} size="sm" borderRadius={0}>
@@ -96,7 +97,7 @@ export const EditKV: React.FC<Props> = ({}) => {
 
         <div className="flex justify-between">
           <Link to={`/dashboard`}>
-            <Button size="lg" borderRadius={0}>
+            <Button size="lg" borderRadius={0} onClick={props.onBackClick}>
               Back
             </Button>
           </Link>

@@ -4,6 +4,9 @@ import { Link } from "react-router-dom";
 import { useToast } from "@chakra-ui/react";
 import { Box } from "@chakra-ui/react";
 import { CheckCircleIcon, ChevronRightIcon } from "@chakra-ui/icons";
+import { Tooltip } from "@chakra-ui/react";
+import { Icon } from "@chakra-ui/icons";
+import { IoSyncCircle } from "react-icons/io5";
 
 import config from "../config";
 
@@ -41,20 +44,21 @@ export const KVItem: React.FC<Props> = (props) => {
 
   return (
     <>
-      <Box className="border bg-white my-1 py-3 px-6 border-gray-200 text-gray-500 transition-colors hover:border-blue-400 overflow-hidden hover:text-blue-400 ">
+      <Box className="border bg-white my-1 py-2 px-4 border-gray-200 text-gray-500 transition-colors hover:border-blue-400 overflow-hidden hover:text-blue-400 ">
         <div className="flex justify-between">
           <div className="flex content-center items-center">
-            <CheckCircleIcon
-              w={4}
-              h={4}
-              color={props.isSynced ? "#48BB78" : "#EDF2F7"}
-              className="mr-5"
-            />
-            <div className="align-middle text-lg font-mono">
+            <Tooltip placement="left" label="synced" aria-label="synced">
+              <CheckCircleIcon
+                w={4}
+                h={4}
+                color={props.isSynced ? "#48BB78" : "#EDF2F7"}
+                className="mr-5"
+              />
+            </Tooltip>
+            <div className="align-middle text-sm font-mono">
               {props.keyname}
             </div>
           </div>
-          <div className="flex"></div>
         </div>
       </Box>
     </>

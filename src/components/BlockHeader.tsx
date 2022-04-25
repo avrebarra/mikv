@@ -26,9 +26,9 @@ export const Header: React.FC<Props> = (props) => {
 
   return (
     <>
-      <div id="header" className="flex justify-between">
-        <div id="title" className="text-2xl mb-2">
-          <span className="font-semibold">
+      <div id="header" className="flex justify-between items-center">
+        <div id="title" className="text-xl">
+          <span className="font-bold">
             <Link className="" to={`/`}>
               #mikv
             </Link>
@@ -38,7 +38,7 @@ export const Header: React.FC<Props> = (props) => {
         <div id="disconnect">
           <Link className="" to={`/`}>
             <Tooltip label="End Session" aria-label="A tooltip">
-              <Button colorScheme={"red"} size="sm" borderRadius={"full"}>
+              <Button colorScheme={"red"} size="md" borderRadius={"full"}>
                 <Icon as={FaPowerOff} />
               </Button>
             </Tooltip>

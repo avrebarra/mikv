@@ -6,6 +6,9 @@ import { Textarea, Input } from "@chakra-ui/react";
 import { Header } from "./BlockHeader";
 import { Icon } from "@chakra-ui/icons";
 import { MdCancel, MdCheckCircle } from "react-icons/md";
+import { BsEyeSlash, BsEye } from "react-icons/bs";
+import { FiEdit } from "react-icons/fi";
+import { RiDeleteBinFill } from "react-icons/ri";
 
 import config from "../config";
 
@@ -58,9 +61,10 @@ export const DashboardEditKV: React.FC<Props> = (props) => {
   return (
     <>
       <Header name="editor" />
-      <div className="text-4xl font-bold mb-4">KV Entry Editor</div>
+      <div className="text-3xl font-bold mb-4">KV Entry Editor</div>
       <div id="form">
         <Input
+          size={"sm"}
           className={
             "mb-2 font-mono text-slate-600" +
             (!editable ? " cursor-default" : "")
@@ -69,9 +73,10 @@ export const DashboardEditKV: React.FC<Props> = (props) => {
           value={key}
           readOnly={!editable}
           onChange={(e) => setKey(e.target.value)}
-          placeholder="enter a passphrase"
+          placeholder="TYPE_YOUR_ID_HERE"
         />
         <Textarea
+          size={"sm"}
           className={
             "mb-3 font-mono text-slate-600" +
             (!editable ? " cursor-pointer" : "")
@@ -80,7 +85,7 @@ export const DashboardEditKV: React.FC<Props> = (props) => {
           value={exposed ? value : value.replace(/./g, "∙")}
           readOnly={!editable}
           onChange={(e) => setValue(e.target.value)}
-          placeholder="type your secrets here"
+          placeholder="Write the value of KV"
         />
 
         <div className="flex justify-between">
@@ -95,13 +100,17 @@ export const DashboardEditKV: React.FC<Props> = (props) => {
               <div>
                 <Button
                   size="md"
+                  colorScheme={exposed ? "yellow" : "gray"}
                   disabled={editable}
                   borderRadius={0}
                   onClick={() => {
                     setExposed(!exposed);
                   }}
                 >
-                  {exposed ? "Hide" : "View"}
+                  {exposed ? <Icon as={BsEyeSlash} /> : <Icon as={BsEye} />}
+                </Button>
+                <Button size="md" colorScheme={"red"} borderRadius={0}>
+                  <Icon as={RiDeleteBinFill} />
                 </Button>
                 <Button
                   colorScheme={editable ? "green" : "telegram"}
@@ -111,7 +120,7 @@ export const DashboardEditKV: React.FC<Props> = (props) => {
                     setEditable(!editable);
                   }}
                 >
-                  Edit
+                  <Icon as={FiEdit} />
                 </Button>
               </div>
             ) : (
@@ -128,8 +137,9 @@ export const DashboardEditKV: React.FC<Props> = (props) => {
                   onClick={() => {
                     setEditable(!editable);
                   }}
+                  leftIcon={<Icon as={MdCancel} />}
                 >
-                  <Icon as={MdCancel} />
+                  Cancel
                 </Button>
                 <Button
                   colorScheme={editable ? "green" : "telegram"}
@@ -138,8 +148,9 @@ export const DashboardEditKV: React.FC<Props> = (props) => {
                   onClick={() => {
                     setEditable(!editable);
                   }}
+                  leftIcon={<Icon as={MdCheckCircle} />}
                 >
-                  <Icon as={MdCheckCircle} />
+                  Confirm
                 </Button>
               </div>
             ) : (

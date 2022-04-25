@@ -20,7 +20,7 @@
   "scripts": {},
   "repository": "github.com/avrebarra/mikv",
   "author": "Avre Barra <avrebarra@gmail.com>",
-  "license": "Apache 2.0",
+  "license": "Apache-2.0",
   "private": false,
   "devDependencies": {
     "@parcel/compressor-raw": "^2.5.0",

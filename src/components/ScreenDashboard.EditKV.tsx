@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 import { useToast, Button, propNames } from "@chakra-ui/react";
 import { Textarea, Input } from "@chakra-ui/react";
-import icon from "../../public/icon.png";
+import { Header } from "./BlockHeader";
 
 import config from "../config";
 
@@ -55,21 +55,7 @@ export const DashboardEditKV: React.FC<Props> = (props) => {
 
   return (
     <>
-      <div id="header" className="flex justify-between">
-        <div id="title" className="text-2xl mb-2">
-          <span className="font-semibold">
-            <Link className="" to={`/`}>
-              #mikv
-            </Link>
-          </span>
-          <span>/editor</span>
-        </div>
-        <div id="disconnect">
-          <Button colorScheme={"red"} size="sm" borderRadius={0}>
-            Logout
-          </Button>
-        </div>
-      </div>
+      <Header name="editor" />
       <div className="text-4xl font-bold mb-5">KV Entry Editor</div>
       <div id="form">
         <Input

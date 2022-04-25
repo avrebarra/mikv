@@ -1,10 +1,9 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 
-import { AtSignIcon } from "@chakra-ui/icons";
 import { useToast, Button } from "@chakra-ui/react";
 import { KVItem } from "./BlockKVItem";
-import icon from "../../public/icon.png";
+import { Header } from "./BlockHeader";
 
 import config from "../config";
 
@@ -41,21 +40,7 @@ export const DashboardListKV: React.FC<Props> = (props) => {
 
   return (
     <>
-      <div id="header" className="flex justify-between">
-        <div id="title" className="text-2xl mb-2">
-          <span className="font-semibold">
-            <Link className="" to={`/`}>
-              #mikv
-            </Link>
-          </span>
-          <span>/dashboard</span>
-        </div>
-        <div id="disconnect">
-          <Button colorScheme={"red"} size="sm" borderRadius={0}>
-            Logout
-          </Button>
-        </div>
-      </div>
+      <Header name="dashboard" />
       <div className="text-4xl font-bold mb-5">
         My Keys & <br /> Values
       </div>

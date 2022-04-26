@@ -9,6 +9,7 @@ import config from "../config";
 
 type Props = {
   onEntryClick?: () => void;
+  onCreateNewClick?: () => void;
 };
 
 export const DashboardListKV: React.FC<Props> = (props) => {
@@ -41,9 +42,7 @@ export const DashboardListKV: React.FC<Props> = (props) => {
   return (
     <>
       <Header name="dashboard" />
-      <div className="text-4xl font-bold mb-4">
-        My Keys & <br /> Values
-      </div>
+      <div className="text-3xl font-bold mb-4">My Keys & Values</div>
       <div id="list">
         {[
           "PASSWORD_SATU",
@@ -54,7 +53,7 @@ export const DashboardListKV: React.FC<Props> = (props) => {
         ].map((e) => {
           return (
             <div className="cursor-pointer mb-2" onClick={props.onEntryClick}>
-              <KVItem isSynced={false} keyname={e} />
+              <KVItem isSynced={true} keyname={e} />
             </div>
           );
         })}
@@ -62,18 +61,25 @@ export const DashboardListKV: React.FC<Props> = (props) => {
           className="mb-2"
           colorScheme={"gray"}
           w={"full"}
-          size="md"
+          size="sm"
           borderRadius={0}
+          onClick={() => {
+            funcToast(
+              "info",
+              "No More Entries",
+              "Cannot find anymore entries to fetch."
+            );
+          }}
         >
-          Show All
+          Show More
         </Button>
         <Button
           className="mb-1"
           w={"full"}
           colorScheme={"telegram"}
-          size="lg"
+          size="md"
           borderRadius={0}
-          onClick={props.onEntryClick}
+          onClick={props.onCreateNewClick}
         >
           + Add new entry
         </Button>

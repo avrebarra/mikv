@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 import { AtSignIcon } from "@chakra-ui/icons";
 import { useToast, Button } from "@chakra-ui/react";
 import { DashboardListKV } from "./ScreenDashboard.ListKV";
-import { DashboardEditKV } from "./ScreenDashboard.EditKV";
+import { DashboardEditor } from "./ScreenDashboard.Editor";
 import icon from "../../public/icon.png";
 
 import config from "../config";
@@ -15,7 +15,8 @@ export const Dashboard: React.FC<Props> = ({}) => {
   // context, vars, and states
   const toast = useToast();
   const [readiness, setReadiness] = React.useState<boolean>(false);
-  const [targetedKV, setTargetedKV] = React.useState<boolean>(false);
+  const [editorVisible, setEditorVisible] = React.useState<boolean>(false);
+  const [targetKVID, setTargetKVID] = React.useState<string>("");
 
   // helper funcs
   const funcLoadData = async () => {};
@@ -42,10 +43,15 @@ export const Dashboard: React.FC<Props> = ({}) => {
   return (
     <>
       {/* display list */}
-      {!targetedKV ? (
+      {!editorVisible ? (
         <DashboardListKV
           onEntryClick={() => {
-            setTargetedKV(true);
+            setTargetKVID("1"); // TODO: update this
+            setEditorVisible(true);
+          }}
+          onCreateNewClick={() => {
+            setTargetKVID("");
+            setEditorVisible(true);
           }}
         />
       ) : (
@@ -53,10 +59,12 @@ export const Dashboard: React.FC<Props> = ({}) => {
       )}
 
       {/* display editor */}
-      {targetedKV ? (
-        <DashboardEditKV
+      {editorVisible ? (
+        <DashboardEditor
+          targetKVID={targetKVID}
           onBackClick={() => {
-            setTargetedKV(false);
+            setEditorVisible(false);
+            setTargetKVID("");
           }}
         />
       ) : (

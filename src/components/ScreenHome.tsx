@@ -2,6 +2,8 @@ import * as React from "react";
 import { Link } from "react-router-dom";
 
 import { useToast, Button } from "@chakra-ui/react";
+import { Icon } from "@chakra-ui/icons";
+import { FaGoogleDrive } from "react-icons/fa";
 import icon from "../../public/icon.png";
 
 import config from "../config";
@@ -38,18 +40,32 @@ export const Home: React.FC<Props> = ({}) => {
   return (
     <>
       <div className="">
-        <div className="mb-2 mt-14">
+        <div className="mb-3 mt-20">
           <img className="w-32 inline-block justify-center" src={icon} alt="" />
         </div>
-        <div className="font-bold text-4xl">
+        <div className="font-bold mb-1 text-5xl">
           <Link className="" to={`/`}>
             #mikv
           </Link>
         </div>
-        <div className="text-2xl mb-2">Your personal key-value store app.</div>
+        <div className="text-2xl mb-4">
+          <div>Your personal key-value store app.</div>
+        </div>
         <div>
           <Link to={`/dashboard`}>
-            <Button colorScheme={"telegram"} size="md" borderRadius={0}>
+            <Button
+              colorScheme={"telegram"}
+              size="md"
+              borderRadius={0}
+              leftIcon={<Icon as={FaGoogleDrive} />}
+              onClick={() => {
+                funcToast(
+                  "success",
+                  "Connected!",
+                  "Success connecting to Google Drive."
+                );
+              }}
+            >
               Connect to Google Drive
             </Button>
           </Link>

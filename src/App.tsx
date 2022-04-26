@@ -10,9 +10,6 @@ import config from "./config";
 
 const { Home } = lazily(() => import("./components/ScreenHome"));
 const { Dashboard } = lazily(() => import("./components/ScreenDashboard"));
-const { DashboardEditKV: EditKV } = lazily(
-  () => import("./components/ScreenDashboard.EditKV")
-);
 const { NotFound404 } = lazily(() => import("./components/Screen404"));
 
 const ChakraThemeExtended = extendTheme({
@@ -55,8 +52,8 @@ export function App() {
   return (
     <ChakraProvider theme={ChakraThemeExtended}>
       <div className="appwrapper flex justify-center items-center h-screen w-screen ">
-        <div className="app w-full max-w-lg h-full xs:max-h-144">
-          <div className="content p-8 py-10">
+        <div className="app w-full max-w-3xl h-full xs:max-h-144">
+          <div className="content p-8 py-10 min-h-full content-between">
             <BrowserRouter basename={config.appBasePath}>
               <React.Suspense fallback={funcRenderLoader()}>
                 <Routes>

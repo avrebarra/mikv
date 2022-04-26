@@ -10,9 +10,6 @@ import config from "./config";
 
 const { Home } = lazily(() => import("./components/ScreenHome"));
 const { Dashboard } = lazily(() => import("./components/ScreenDashboard"));
-const { DashboardEditKV: EditKV } = lazily(
-  () => import("./components/ScreenDashboard.EditKV")
-);
 const { NotFound404 } = lazily(() => import("./components/Screen404"));
 
 const ChakraThemeExtended = extendTheme({

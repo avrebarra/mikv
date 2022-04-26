@@ -9,6 +9,7 @@ import config from "../config";
 
 type Props = {
   onEntryClick?: () => void;
+  onCreateNewClick?: () => void;
 };
 
 export const DashboardListKV: React.FC<Props> = (props) => {
@@ -71,7 +72,7 @@ export const DashboardListKV: React.FC<Props> = (props) => {
           colorScheme={"telegram"}
           size="md"
           borderRadius={0}
-          onClick={props.onEntryClick}
+          onClick={props.onCreateNewClick}
         >
           + Add new entry
         </Button>

@@ -13,13 +13,11 @@ import { RiDeleteBinFill } from "react-icons/ri";
 import config from "../config";
 
 type Props = {
-  key?: string;
-  value?: string;
-  editable?: boolean;
+  targetKVID?: string;
   onBackClick?: () => void;
 };
 
-export const DashboardEditKV: React.FC<Props> = (props) => {
+export const DashboardEditor: React.FC<Props> = (props) => {
   // context, vars, and states
   const toast = useToast();
   const [readiness, setReadiness] = React.useState<boolean>(false);
@@ -31,7 +29,9 @@ export const DashboardEditKV: React.FC<Props> = (props) => {
   // helper funcs
   const funcLoadData = async () => {
     if (!readiness) {
-      setEditable(editable);
+      if (props.targetKVID == "") {
+        setEditable(true);
+      }
     }
     if (editable) {
       setExposed(true);
@@ -96,9 +96,10 @@ export const DashboardEditKV: React.FC<Props> = (props) => {
           </Link>
           <div>
             {/* buttons on view */}
-            {!editable ? (
+            {!editable && props.targetKVID != "" ? (
               <div>
                 <Button
+                  id="view"
                   size="md"
                   colorScheme={exposed ? "yellow" : "gray"}
                   disabled={editable}
@@ -109,10 +110,18 @@ export const DashboardEditKV: React.FC<Props> = (props) => {
                 >
                   {exposed ? <Icon as={BsEyeSlash} /> : <Icon as={BsEye} />}
                 </Button>
-                <Button size="md" colorScheme={"red"} borderRadius={0}>
+
+                <Button
+                  id="delete"
+                  size="md"
+                  colorScheme={"red"}
+                  borderRadius={0}
+                >
                   <Icon as={RiDeleteBinFill} />
                 </Button>
+
                 <Button
+                  id="edit"
                   colorScheme={editable ? "green" : "telegram"}
                   size="md"
                   borderRadius={0}
@@ -128,7 +137,7 @@ export const DashboardEditKV: React.FC<Props> = (props) => {
             )}
 
             {/* buttons on edit */}
-            {editable ? (
+            {editable && props.targetKVID != "" ? (
               <div>
                 <Button
                   colorScheme={"red"}
@@ -153,6 +162,21 @@ export const DashboardEditKV: React.FC<Props> = (props) => {
                   Confirm
                 </Button>
               </div>
+            ) : (
+              <span />
+            )}
+
+            {/* buttons on create new */}
+            {props.targetKVID == "" ? (
+              <Button
+                colorScheme={editable ? "green" : "telegram"}
+                size="md"
+                borderRadius={0}
+                onClick={() => {}}
+                leftIcon={<Icon as={MdCheckCircle} />}
+              >
+                Create KV
+              </Button>
             ) : (
               <span />
             )}

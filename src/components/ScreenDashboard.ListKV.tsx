@@ -64,7 +64,7 @@ export const DashboardListKV: React.FC<Props> = (props) => {
           size="sm"
           borderRadius={0}
         >
-          Show All
+          Show More
         </Button>
         <Button
           className="mb-1"

@@ -172,7 +172,13 @@ export const DashboardEditor: React.FC<Props> = (props) => {
                 colorScheme={editable ? "green" : "telegram"}
                 size="md"
                 borderRadius={0}
-                onClick={() => {}}
+                onClick={() => {
+                  funcToast(
+                    "success",
+                    "Success!",
+                    "New key-value pairs succesfully created."
+                  );
+                }}
                 leftIcon={<Icon as={MdCheckCircle} />}
               >
                 Create KV

@@ -63,6 +63,13 @@ export const DashboardListKV: React.FC<Props> = (props) => {
           w={"full"}
           size="sm"
           borderRadius={0}
+          onClick={() => {
+            funcToast(
+              "info",
+              "No More Entries",
+              "Cannot find anymore entries to fetch."
+            );
+          }}
         >
           Show More
         </Button>

@@ -58,6 +58,13 @@ export const Home: React.FC<Props> = ({}) => {
               size="md"
               borderRadius={0}
               leftIcon={<Icon as={FaGoogleDrive} />}
+              onClick={() => {
+                funcToast(
+                  "success",
+                  "Connected!",
+                  "Success connecting to Google Drive."
+                );
+              }}
             >
               Connect to Google Drive
             </Button>
